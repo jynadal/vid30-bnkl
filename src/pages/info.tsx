@@ -28,13 +28,13 @@ export default function Info() {
                     ))}
                 {market_metadata && (
                     <ContractMetadata
-                        title={"NFT Marketplace Contract Metadata"}
+                        title={"RWA Marketplace Contract Metadata"}
                         metadata={market_metadata as Metadata}
                     />
                 )}
                 {nft_metadata && (
                     <ContractMetadata
-                        title={"NFT Collection Contract Metadata"}
+                        title={"RWA Collection Contract Metadata"}
                         metadata={nft_metadata as Metadata}
                     />
                 )}

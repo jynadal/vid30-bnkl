@@ -12,7 +12,7 @@ export default function Wallet() {
         <Layout>
             <div>
                 <h1 className="text-6xl font-semibold my-4 text-center">
-                    My NFTs
+                    My RWAs
                 </h1>
 
                 {!address && (
@@ -24,7 +24,7 @@ export default function Wallet() {
                 )}
 
                 {address && isLoading ? (
-                    <div className="text-center">Loading NFT Data..</div>
+                    <div className="text-center">Loading RWA Data..</div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 ">
                         {ownedNFTs &&

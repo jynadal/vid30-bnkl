@@ -21,13 +21,13 @@ function Home() {
         <Layout>
             {isLoading ? (
                 <div className="text-center">
-                    Loading NFT marketplace data ...
+                    Loading RWA marketplace data ...
                 </div>
             ) : (
                 <div>
                     <div>
                         <h1 className="text-3xl font-semibold my-12 text-center">
-                            Listed NFTs
+                            Listed Real World Assets
                         </h1>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">

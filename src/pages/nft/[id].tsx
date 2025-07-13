@@ -41,12 +41,12 @@ function NFTDetailsPage() {
         <Layout>
             <div>
                 <h1 className="text-6xl font-semibold my-4 text-center">
-                    NFT Details
+                    RWA Details
                 </h1>
 
                 {isNFTLoading || !nft ? (
                     <div className="text-center">
-                        {`Loading NFT with id ${nftID} `}
+                        {`Loading RWA with id ${nftID} `}
                     </div>
                 ) : (
                     <>

@@ -5,17 +5,18 @@ import { useAddress, useMintNFT } from "@thirdweb-dev/react";
 import { useState } from "react";
 
 export default function Wallet() {
-    const [name, setName] = useState("");
+    const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [image, setImage] = useState("");
+    const [cover, setCover] = useState("");
+    const [external_url, setExtUrl] = useState("");
 
     const { nft_contract } = getNFTContract();
 
     const { mutate: mintNFT, isLoading, error } = useMintNFT(nft_contract);
     const address = useAddress();
 
-    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setName(event.target.value);
+    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(event.target.value);
     };
 
     const handleDescriptionChange = (
@@ -24,23 +25,28 @@ export default function Wallet() {
         setDescription(event.target.value);
     };
 
-    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setImage(event.target.value);
+    const handleCoverChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCover(event.target.value);
+    };
+
+    const handleExtUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setExtUrl(event.target.value);
     };
 
     const handleSubmit = async (event: React.FormEvent) => {
         try {
             event.preventDefault();
 
-            if (name === "" || description === "" || image === "") {
+            if (title === "" || description === "" || external_url === ""  || cover === "") {
                 return;
             }
 
             const metadata: MintMetadata = {
                 metadata: {
-                    name,
+                    title,
                     description,
-                    image,
+                    cover,
+                    external_url,
                 },
                 to: address ?? "",
                 supply: 1,
@@ -55,22 +61,22 @@ export default function Wallet() {
         <Layout>
             <div>
                 <h1 className="text-6xl font-semibold my-4 text-center">
-                    Mint new NFT
+                    Mint new RWA
                 </h1>
 
                 <div className="relative bg-gray-800 text-white p-6 rounded-lg shadow-md w-full max-w-2xl">
                     <h1 className="text-2xl font-semibold my-4 text-center">
-                        Fill details about the NFT you want to mint{" "}
+                        Fill details about the RWA you want to mint{" "}
                     </h1>
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <label className="font-bold text-xl">Name:</label>
+                            <label className="font-bold text-xl">Title:</label>
                             <input
                                 className=" ml-2 bg-gray-800"
-                                placeholder="Name of the NFT"
+                                placeholder="Name of the RWA"
                                 type="text"
-                                value={name}
-                                onChange={handleNameChange}
+                                value={title}
+                                onChange={handleTitleChange}
                             />
                         </div>
                         <div>
@@ -79,21 +85,33 @@ export default function Wallet() {
                             </label>
                             <input
                                 className=" ml-2 bg-gray-800"
-                                placeholder="Description of the NFT"
+                                placeholder="Description of the RWA"
                                 value={description}
                                 onChange={handleDescriptionChange}
                             />
                         </div>
                         <div>
                             <label className="font-bold text-xl">
-                                Image URL:
+                                Cover URL:
                             </label>
                             <input
                                 className=" ml-2 bg-gray-800 w-80"
-                                placeholder="Image of the NFT"
+                                placeholder="Image of the RWA"
                                 type="text"
-                                value={image}
-                                onChange={handleImageChange}
+                                value={cover}
+                                onChange={handleCoverChange}
+                            />
+                        </div>
+                         <div>
+                            <label className="font-bold text-xl">
+                                Movie URL:
+                            </label>
+                               <input
+                                className=" ml-2 bg-gray-800 w-80"
+                                placeholder="Image of the RWA"
+                                type="text"
+                                value={external_url}
+                                onChange={handleExtUrlChange}
                             />
                         </div>
                         <button
